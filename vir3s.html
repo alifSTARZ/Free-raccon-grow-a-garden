@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fake Virus Prank</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: monospace;
+    color: lime;
+  }
+  #playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+  .videoClone {
+    position: absolute;
+    width: 320px;
+    height: 180px;
+    pointer-events: none;
+  }
+  #passwordOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.85);
+    color: lime;
+    padding: 30px;
+    display: none;
+    border: 2px solid lime;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+  }
+  #passwordOverlay input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    margin-top: 10px;
+    border: 1px solid lime;
+    border-radius: 5px;
+    background: black;
+    color: lime;
+  }
+  #passwordOverlay button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  #warningText {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+    z-index: 999;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<button id="playBtn">PLAY</button>
+<div id="warningText">WARNING!!</div>
+
+<div id="passwordOverlay">
+  <div>Enter Password to Continue:</div>
+  <input type="text" id="pwInput" placeholder="Password">
+  <br>
+  <button id="pwSubmit">Submit</button>
+</div>
+
+<audio id="bgAudio" loop><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fake Virus Prank</title>
+<style>
+  body {
+    margin: 0;
+    background: url('https://i.im.ge/2025/09/02/nOqovD.1001016002.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    font-family: monospace;
+    color: lime;
+  }
+  #playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+  .videoClone {
+    position: absolute;
+    width: 320px;
+    height: 180px;
+    pointer-events: none;
+  }
+  #passwordOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.85);
+    color: lime;
+    padding: 30px;
+    display: none;
+    border: 2px solid lime;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+  }
+  #passwordOverlay input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    margin-top: 10px;
+    border: 1px solid lime;
+    border-radius: 5px;
+    background: black;
+    color: lime;
+  }
+  #passwordOverlay button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  #warningText {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+    z-index: 999;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<button id="playBtn">PLAY</button>
+<div id="warningText">WARNING!!</div>
+
+<div id="passwordOverlay">
+  <div>Enter Password to Continue:</div>
+  <input type="text" id="pwInput" placeholder="Password">
+  <br>
+  <button id="pwSubmit">Submit</button>
+</div>
+
+<audio id="bgAudio" loop>
+  <source src="lv_0_20250902152354.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const playBtn = document.getElementById('playBtn');
+const passwordOverlay = document.getElementById('passwordOverlay');
+const pwInput = document.getElementById('pwInput');
+const pwSubmit = document.getElementById('pwSubmit');
+const warningText = document.getElementById('warningText');
+const bgAudio = document.getElementById('bgAudio');
+
+let glitchInterval;
+let volume = 0.2; // awal volume
+
+playBtn.onclick = () => {
+  playBtn.style.display = 'none';
+
+  // Mulai audio
+  bgAudio.volume = volume;
+  bgAudio.play().catch(e => console.log("Autoplay gagal, user klik diperlukan"));
+
+  // Set loop untuk menaikkan volume tiap loop
+  bgAudio.onended = () => {
+    volume = Math.min(volume + 0.1, 1); // maksimal volume 1
+    bgAudio.currentTime = 0;
+    bgAudio.play();
+    bgAudio.volume = volume;
+  };
+
+  // Video utama
+  const video = document.createElement('iframe');
+  video.src = "https://player.vimeo.com/video/1115075328?autoplay=1&loop=1";
+  video.width = 640;
+  video.height = 360;
+  video.style.position = 'absolute';
+  video.style.top = '50%';
+  video.style.left = '50%';
+  video.style.transform = 'translate(-50%, -50%)';
+  video.style.zIndex = '1';
+  document.body.appendChild(video);
+
+  // Duplikat video random
+  for(let i=0; i<5; i++){
+    let clone = video.cloneNode(true);
+    clone.classList.add('videoClone');
+    clone.style.top = Math.random()*window.innerHeight + 'px';
+    clone.style.left = Math.random()*window.innerWidth + 'px';
+    document.body.appendChild(clone);
+
+    setInterval(() => {
+      clone.style.top = Math.random()*window.innerHeight + 'px';
+      clone.style.left = Math.random()*window.innerWidth + 'px';
+    }, 1500);
+  }
+
+  // Efek lag / glitch
+  glitchInterval = setInterval(() => {
+    document.body.style.transform = `translate(${Math.random()*20-10}px, ${Math.random()*20-10}px)`;
+  }, 100);
+
+  // WARNING berkedip
+  setInterval(() => {
+    warningText.style.display = (warningText.style.display === 'none') ? 'block' : 'none';
+  }, 500);
+
+  // Password overlay muncul setelah 5 detik
+  setTimeout(() => {
+    passwordOverlay.style.display = 'block';
+  }, 5000);
+};
+
+// Submit password
+pwSubmit.onclick = () => {
+  if(pwInput.value === "Virus unclock"){
+    alert("Access Granted!");
+    passwordOverlay.style.display = 'none';
+    document.body.style.transform = 'none';
+    clearInterval(glitchInterval);
+  } else {
+    alert("Wrong password! Access Denied!");
+  }
+};
+</script>
+
+</body>
+</html>
+  <source src="lv_0_20250902152354.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const playBtn = document.getElementById('playBtn');
+const passwordOverlay = document.getElementById('passwordOverlay');
+const pwInput = document.getElementById('pwInput');
+const pwSubmit = document.getElementById('pwSubmit');
+const warningText = document.getElementById('warningText');
+const bgAudio = document.getElementById('bgAudio');
+
+let glitchInterval;
+
+playBtn.onclick = () => {
+  playBtn.style.display = 'none';
+
+  // Mulai suara langsung
+  bgAudio.play().catch(e => {
+    console.log("Audio autoplay gagal, user perlu klik untuk play");
+  });
+
+  // Video utama
+  const video = document.createElement('iframe');
+  video.src = "https://player.vimeo.com/video/1115075328?autoplay=1&loop=1";
+  video.width = 640;
+  video.height = 360;
+  video.style.position = 'absolute';
+  video.style.top = '50%';
+  video.style.left = '50%';
+  video.style.transform = 'translate(-50%, -50%)';
+  video.style.zIndex = '1';
+  document.body.appendChild(video);
+
+  // Duplikat video random
+  for(let i=0; i<5; i++){
+    let clone = video.cloneNode(true);
+    clone.classList.add('videoClone');
+    clone.style.top = Math.random()*window.innerHeight + 'px';
+    clone.style.left = Math.random()*window.innerWidth + 'px';
+    document.body.appendChild(clone);
+
+    setInterval(() => {
+      clone.style.top = Math.random()*window.innerHeight + 'px';
+      clone.style.left = Math.random()*window.innerWidth + 'px';
+    }, 1500);
+  }
+
+  // Efek lag / glitch
+  glitchInterval = setInterval(() => {
+    document.body.style.transform = `translate(${Math.random()*20-10}px, ${Math.random()*20-10}px)`;
+  }, 100);
+
+  // WARNING berkedip
+  setInterval(() => {
+    warningText.style.display = (warningText.style.display === 'none') ? 'block' : 'none';
+  }, 500);
+
+  // Password overlay muncul setelah 5 detik
+  setTimeout(() => {
+    passwordOverlay.style.display = 'block';
+  }, 5000);
+};
+
+// Submit password
+pwSubmit.onclick = () => {
+  if(pwInput.value === "Virus unclock"){
+    alert("Access Granted!");
+    passwordOverlay.style.display = 'none';
+    document.body.style.transform = 'none';
+    clearInterval(glitchInterval);
+  } else {
+    alert("Wrong password! Access Denied!");
+  }
+};
+</script>
+
+</body>
+</html>
